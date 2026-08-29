@@ -31,11 +31,11 @@ export const TABLE_MOCKS: Record<string, TableMockDefinition> = {
     r('⌁', 'Permiso por excepción', 'PROFESOR', 'neutral', 'Motivo registrado', 'AUD-88419', 'Ayer · 17:14')
   ], 'Mostrando los últimos 3 eventos'),
 
-  'cursos/comisiones': table('Buscar comisión o profesor…', 'Nueva comisión', ['Comisión', 'Profesor a cargo', 'Matrícula', 'Estado'], [
-    r('A', 'K1024 · Turno mañana', 'Prof. Gómez', 'neutral', '28 / 30 inscriptos', 'Activa', 'Algoritmos · 2026'),
-    r('B', 'K1025 · Turno noche', 'Prof. Pérez', 'neutral', '24 / 30 inscriptos', 'Activa', 'Algoritmos · 2026'),
-    r('C', 'K1026 · Intensiva', 'Prof. Gómez', 'warning', '12 / 30 inscriptos', 'Borrador', 'Inicio 14 sep')
-  ], '3 comisiones en el curso', 1),
+  'cursos/comisiones': table('Buscar comisión o estado…', 'Nueva comisión', ['Comisión', 'Matrícula', 'Inicio', 'Estado'], [
+    r('A', 'K1024 · Turno mañana', '28 / 30', 'neutral', '17 mar 2026', 'Activa', 'Algoritmos · 2026'),
+    r('B', 'K1025 · Turno noche', '24 / 30', 'neutral', '17 mar 2026', 'Activa', 'Algoritmos · 2026'),
+    r('C', 'K1026 · Intensiva', '12 / 30', 'warning', '14 sep 2026', 'Borrador', 'Inicio pendiente')
+  ], '3 comisiones de tu curso', 1),
   'cursos/padron': table('Buscar por alumno, legajo o email…', 'Agregar alumno', ['Alumno', 'Legajo', 'Email institucional', 'Validación'], [
     r('AT', 'Ana Torres', '54231', 'success', 'ana@alumnos.utn.edu.ar', 'Validado', 'Alta manual'),
     r('RS', 'Ramiro Suárez', '54280', 'success', 'ramiro@alumnos.utn.edu.ar', 'Validado', 'Carga masiva'),

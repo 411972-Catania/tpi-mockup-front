@@ -8,6 +8,7 @@ export type MockKind =
   | 'table'
   | 'course'
   | 'course-settings'
+  | 'course-close'
   | 'course-list'
   | 'roadmap'
   | 'builder'

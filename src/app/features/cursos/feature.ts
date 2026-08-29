@@ -14,6 +14,6 @@ export const CURSOS_FEATURE: FeatureDefinition = {
     {id:'padron',title:'Padrón del curso',description:'Alta individual, importación masiva y errores.',roles:['profesor'],phase:'MVP',mock:'table',rf:['RF-USR-05c','RF-USR-05d']},
     {id:'pendientes',title:'Solicitudes de matrícula',description:'Casos pendientes contra el padrón del curso.',roles:['profesor'],phase:'MVP',mock:'table',rf:['RF-USR-05g','RF-USR-05h']},
     {id:'presencialidad',title:'Registro de asistencia',description:'Encuentros, presentes y observaciones.',roles:['profesor'],phase:'Fase 2',mock:'table',rf:['EXT-PRES-01']},
-    {id:'cierre',title:'Asistente de cierre',description:'Estados académicos, validaciones y archivado.',roles:['profesor'],phase:'MVP',mock:'progress',rf:['RF-CUR-08b','RF-RNK-10']}
+    {id:'cierre',title:'Asistente de cierre',description:'Estados académicos, validaciones y archivado.',roles:['profesor'],phase:'MVP',mock:'course-close',rf:['RF-CUR-08b','RF-RNK-10']}
   ]
 };

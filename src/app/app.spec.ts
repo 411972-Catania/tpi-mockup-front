@@ -50,11 +50,19 @@ describe('App', () => {
     expect(fixture.nativeElement.textContent).toContain('Cursos a cargo');
     expect(fixture.nativeElement.textContent).toContain('Editar curso');
     expect(fixture.nativeElement.textContent).not.toContain('Abrir desafíos');
+    let destination = '';
+    fixture.componentInstance.navigateTo.subscribe(screen => destination = screen);
+    fixture.nativeElement.querySelector('.teacher-course-card .mock-primary').click();
+    expect(destination).toBe('configuracion');
 
     role.role.set('alumno');
     fixture.detectChanges();
     expect(fixture.nativeElement.textContent).toContain('Dos cursos en curso');
     expect(fixture.nativeElement.textContent).toContain('Abrir desafíos');
+  });
+
+  it('should use a dedicated closure mock for course closure', () => {
+    expect(CURSOS_FEATURE.screens.find(screen => screen.id === 'cierre')?.mock).toBe('course-close');
   });
 
   it('should use a dedicated settings mock for course configuration', () => {
