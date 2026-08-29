@@ -4,6 +4,7 @@ import { App } from './app';
 import { FEATURES } from './core/data/platform-catalog';
 import { TABLE_MOCKS } from './core/data/table-mock-catalog';
 import { IDENTIDAD_FEATURE } from './features/identidad/feature';
+import { CURSOS_FEATURE } from './features/cursos/feature';
 
 describe('App', () => {
   beforeEach(async () => {
@@ -33,6 +34,11 @@ describe('App', () => {
   it('should show two courses with a dedicated course-home mock', () => {
     const cursos = FEATURES.find(feature => feature.id === 'cursos');
     expect(cursos?.screens.find(screen => screen.id === 'mis-cursos')?.mock).toBe('course-list');
+  });
+
+  it('should keep pending enrollment validation under Cursos', () => {
+    expect(IDENTIDAD_FEATURE.screens.some(screen => screen.id === 'pendientes')).toBe(false);
+    expect(CURSOS_FEATURE.screens.find(screen => screen.id === 'pendientes')?.title).toBe('Solicitudes de matrícula');
   });
 
   it('should use self-service registration mocks for both identity roles', () => {

@@ -20,7 +20,7 @@ export const TABLE_MOCKS: Record<string, TableMockDefinition> = {
     r('LM', 'Lucía Martínez', 'ALUMNO', 'warning', 'Pendiente de validación', '27 ago · 09:11', 'Curso K1024'),
     r('PA', 'Paula Acosta', 'ADMIN', 'success', '2FA verificado', '26 ago · 14:03', 'Sin restricciones')
   ], 'Mostrando 4 de 120 usuarios'),
-  'identidad/pendientes': table('Buscar solicitud o legajo…', 'Resolver selección', ['Solicitante', 'Curso', 'Motivo', 'Acción requerida'], [
+  'cursos/pendientes': table('Buscar solicitud o legajo…', 'Resolver selección', ['Solicitante', 'Curso', 'Motivo', 'Acción requerida'], [
     r('LM', 'Lucía Martínez', 'K1024', 'neutral', 'Legajo no figura en padrón', 'Incorporar o exceptuar', '54278 · lucia@alumnos.utn.edu.ar'),
     r('RS', 'Ramiro Suárez', 'K1024', 'warning', 'Email no coincide', 'Revisar padrón', '54280 · ramiro@alumnos.utn.edu.ar'),
     r('CV', 'Camila Vera', 'K1024', 'neutral', 'Solicitud recibida hoy', 'Incorporar al padrón', '54283 · camila@alumnos.utn.edu.ar')
