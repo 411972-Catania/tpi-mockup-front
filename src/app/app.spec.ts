@@ -54,6 +54,13 @@ describe('App', () => {
     fixture.componentInstance.navigateTo.subscribe(screen => destination = screen);
     fixture.nativeElement.querySelector('.teacher-course-card .mock-primary').click();
     expect(destination).toBe('configuracion');
+    let courseDestination: {screen:string;courseId:string} | undefined;
+    fixture.componentInstance.navigateToCourse.subscribe(destination => courseDestination = destination);
+    fixture.nativeElement.querySelector('[aria-label="Acciones de K1024"]').click();
+    fixture.detectChanges();
+    expect(fixture.nativeElement.textContent).toContain('Padrón del curso');
+    fixture.nativeElement.querySelector('.course-action-menu button').click();
+    expect(courseDestination).toEqual({screen:'padron',courseId:'k1024'});
 
     role.role.set('alumno');
     fixture.detectChanges();

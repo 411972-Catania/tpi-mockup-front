@@ -11,7 +11,8 @@ export class FeatureWorkspaceComponent {
   readonly roleContext=inject(RoleContextService);
   readonly feature=getFeature(this.route.snapshot.data['featureId'])!;
   readonly selectedId=signal(this.feature.screens[0].id);
+  readonly selectedCourseId=signal<string | null>(null);
   readonly visibleScreens=computed(()=>this.feature.screens.filter(screen=>this.roleContext.role()==='admin' || screen.roles.includes(this.roleContext.role())));
   readonly selectedScreen=computed(()=>this.visibleScreens().find(screen=>screen.id===this.selectedId()) ?? this.visibleScreens()[0] ?? this.feature.screens[0]);
-  select(id:string){this.selectedId.set(id);document.querySelector('.preview-column')?.scrollIntoView({behavior:'smooth',block:'start'});}
+  select(id:string,courseId:string | null=null){this.selectedId.set(id);this.selectedCourseId.set(courseId);document.querySelector('.preview-column')?.scrollIntoView({behavior:'smooth',block:'start'});}
 }
