@@ -1,0 +1,42 @@
+<div class="page overview-page">
+  <section class="overview-hero">
+    <div class="hero-copy">
+      <span class="eyebrow"><span class="live-pulse"></span> Blueprint funcional · PRD v2.1</span>
+      <h1>Doce equipos.<br><em>Un solo recorrido.</em></h1>
+      <p>Un mapa navegable de las vistas, límites y contratos del monolito modular. Cambiá el rol de arriba para ver qué le corresponde a cada persona.</p>
+      <div class="hero-actions"><a href="#modules" class="button primary">Explorar módulos <app-icon name="arrow" /></a><a routerLink="/arquitectura" class="button secondary">Ver dependencias</a></div>
+    </div>
+    <div class="hero-board" aria-label="Resumen del proyecto">
+      <div class="board-label">Plano de producto <span>2026 / Q4</span></div>
+      <div class="board-main">
+        <div class="big-stat"><strong>12</strong><span>dominios<br>coordinados</span></div>
+        <div class="board-stats"><div><strong>{{totalScreens}}</strong><span>vistas relevadas</span></div><div><strong>{{mvpScreens}}</strong><span>vistas MVP</span></div><div><strong>3</strong><span>roles operativos</span></div></div>
+      </div>
+      <div class="board-line"><span></span><span></span><span></span><span></span><span></span></div>
+      <p>Flujo crítico de activación</p>
+      <div class="critical-flow"><span>Identidad</span><i>→</i><span>Curso + padrón</span><i>→</i><span>Golden set</span><i>→</i><span>Calibración</span><i>→</i><span class="accent">Curso activo</span></div>
+    </div>
+  </section>
+
+  <section class="scope-strip" aria-label="Alcance por fase">
+    <div><span class="phase-dot mvp"></span><strong>MVP</strong><small>Base académica y gamificación</small></div>
+    <div><span class="phase-dot phase2"></span><strong>Fase 2</strong><small>Economía, chat y progresión</small></div>
+    <div><span class="phase-dot phase3"></span><strong>Fase 3</strong><small>Subastas, colaboración e IA avanzada</small></div>
+    <a routerLink="/arquitectura">Ver contratos entre equipos <app-icon name="arrow" /></a>
+  </section>
+
+  <section id="modules" class="modules-section">
+    <div class="section-heading"><div><span class="eyebrow">Mapa de responsabilidades</span><h2>El producto, módulo por módulo</h2></div><p>Se muestran las vistas disponibles para el rol <strong>{{roleContext.role()}}</strong>.</p></div>
+    <div class="module-grid">
+      @for(feature of features;track feature.id){
+        <a class="module-card" [routerLink]="['/modulo',feature.slug]" [style.--feature-color]="feature.color" [style.--feature-tint]="feature.tint">
+          <div class="module-card-top"><span class="module-number">{{feature.order.toString().padStart(2,'0')}}</span><span class="module-icon"><app-icon [name]="feature.icon" /></span><span class="phase-tag" [class.future]="feature.primaryPhase!=='MVP'">{{feature.primaryPhase}}</span></div>
+          <h3>{{feature.name}}</h3><p>{{feature.tagline}}</p>
+          <div class="responsibility-list">@for(item of feature.responsibilities.slice(0,3);track item){<span>{{item}}</span>}</div>
+          <div class="module-card-foot"><span><strong>{{visibleCount(feature.id)}}</strong> vistas para este rol</span><app-icon name="arrow" /></div>
+        </a>
+      }
+    </div>
+  </section>
+  <section class="principles-section"><div><span class="eyebrow">Decisiones que atraviesan todo</span><h2>Cinco invariantes del PRD</h2></div><ol><li><strong>IA con límites.</strong><span>Nunca entrega la solución ni fragmentos resueltos.</span></li><li><strong>Anonimato real.</strong><span>Encuesta y participación viven en registros sin vínculo.</span></li><li><strong>Historia preservada.</strong><span>La producción académica no se borra físicamente.</span></li><li><strong>Calibración bloqueante.</strong><span>Sin evaluador aprobado, el curso no se activa.</span></li><li><strong>Economía por curso.</strong><span>Las recompensas no cruzan el límite del curso.</span></li></ol></section>
+</div>

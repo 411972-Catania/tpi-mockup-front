@@ -1,0 +1,41 @@
+<div class="app-shell">
+  <aside class="sidebar" [class.is-open]="menuOpen()">
+    <div class="brand-block">
+      <a routerLink="/" class="brand" (click)="menuOpen.set(false)" aria-label="Ir al mapa general">
+        <span class="brand-mark"><span>A</span></span>
+        <span><strong>Aula Quest</strong><small>Blueprint funcional</small></span>
+      </a>
+      <button class="icon-button sidebar-close" (click)="menuOpen.set(false)" aria-label="Cerrar menú"><app-icon name="close" /></button>
+    </div>
+
+    <nav aria-label="Navegación principal">
+      <p class="nav-label">Panorama</p>
+      <a routerLink="/" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" (click)="menuOpen.set(false)"><app-icon name="home" /><span>Mapa general</span></a>
+      <a routerLink="/arquitectura" routerLinkActive="active" (click)="menuOpen.set(false)"><app-icon name="network" /><span>Dependencias</span></a>
+      <p class="nav-label teams-label">Equipos · 12 módulos</p>
+      @for (feature of features; track feature.id) {
+        <a [routerLink]="['/modulo', feature.slug]" routerLinkActive="active" (click)="menuOpen.set(false)" [style.--module-color]="feature.color">
+          <span class="module-dot"></span><span>{{ feature.shortName }}</span><small>{{ feature.screens.length }}</small>
+        </a>
+      }
+    </nav>
+    <div class="sidebar-foot">
+      <span class="status-dot"></span>
+      <span><strong>Angular 22</strong><small>Mock navegable · sin backend</small></span>
+    </div>
+  </aside>
+
+  <div class="main-column">
+    <header class="topbar">
+      <button class="icon-button menu-button" (click)="menuOpen.set(true)" aria-label="Abrir menú"><app-icon name="menu" /></button>
+      <div class="context-label"><span>Trabajo Integrador</span><strong>Plataforma gamificada</strong></div>
+      <div class="topbar-actions">
+        <label class="role-switcher"><span>Ver como</span><select [value]="roleContext.role()" (change)="setRole($event)">@for (role of roles; track role.value) { <option [value]="role.value">{{ role.label }}</option> }</select></label>
+        <button class="icon-button notification-button" aria-label="Notificaciones"><app-icon name="bell" /><span>3</span></button>
+        <div class="avatar" title="Usuario de demostración">FT</div>
+      </div>
+    </header>
+    <main><router-outlet /></main>
+  </div>
+</div>
+@if (menuOpen()) { <button class="backdrop" (click)="menuOpen.set(false)" aria-label="Cerrar menú"></button> }

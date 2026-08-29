@@ -1,0 +1,30 @@
+<div class="page architecture-page">
+  <header class="page-title-row"><div><span class="eyebrow">Arquitectura de colaboración</span><h1>Quién depende de quién</h1><p>Las flechas indican datos o eventos que un equipo necesita de otro. No implican imports directos entre features: el contrato debe pasar por una fachada o API acordada.</p></div><span class="page-stamp">12 SLICES<br>27 CONTRATOS</span></header>
+  <section class="dependency-landscape">
+    <div class="landscape-row foundation"><span class="lane-label">Base transversal</span>@for(f of features.slice(0,2);track f.id){<a [routerLink]="['/modulo',f.slug]" [style.--feature-color]="f.color"><app-icon [name]="f.icon"/><strong>{{f.shortName}}</strong><small>{{f.screens.length}} vistas</small></a>}</div>
+    <div class="lane-arrow">↓ identidad, roles, curso y comisión</div>
+    <div class="landscape-row learning"><span class="lane-label">Experiencia académica</span>@for(f of features.slice(2,5);track f.id){<a [routerLink]="['/modulo',f.slug]" [style.--feature-color]="f.color"><app-icon [name]="f.icon"/><strong>{{f.shortName}}</strong><small>{{f.screens.length}} vistas</small></a>}</div>
+    <div class="lane-arrow split"><span>↓ ejecución + evidencia</span><span>↓ resultados + recompensas</span></div>
+    <div class="landscape-row services"><span class="lane-label">Servicios de dominio</span>@for(f of features.slice(5,9);track f.id){<a [routerLink]="['/modulo',f.slug]" [style.--feature-color]="f.color"><app-icon [name]="f.icon"/><strong>{{f.shortName}}</strong><small>{{f.screens.length}} vistas</small></a>}</div>
+    <div class="lane-arrow">↓ eventos, saldos, progreso y observabilidad</div>
+    <div class="landscape-row experience"><span class="lane-label">Lectura y operación</span>@for(f of features.slice(9);track f.id){<a [routerLink]="['/modulo',f.slug]" [style.--feature-color]="f.color"><app-icon [name]="f.icon"/><strong>{{f.shortName}}</strong><small>{{f.screens.length}} vistas</small></a>}</div>
+  </section>
+  <section class="contracts-section"><div class="section-heading"><div><span class="eyebrow">Contratos explícitos</span><h2>Matriz de integraciones</h2></div><p>El equipo de la izquierda consume el contrato.</p></div><div class="contract-table"><div class="contract-head"><span>Equipo consumidor</span><span>Depende de</span><span>Motivo</span><span>Contrato mínimo</span></div>@for(feature of features;track feature.id){@for(dep of feature.dependencies;track dep.target){<div class="contract-row"><span class="team-cell"><i [style.background]="feature.color"></i>{{feature.name}}</span><span>{{featureName(dep.target)}}</span><span>{{dep.reason}}</span><code>{{dep.contract}}</code></div>}}</div></section>
+  <section class="repo-blueprint"><div><span class="eyebrow">Ownership en el monolito</span><h2>Una carpeta, un equipo</h2><p>Cada slice publica rutas y definición de pantallas. Lo compartido vive fuera de los features; un grupo no importa componentes internos de otro.</p></div><pre><span>src/app/</span>
+├── <b>core/</b>              # modelos, sesión, contratos
+├── <b>shared/</b>            # UI sin reglas de negocio
+├── <b>layout/</b>            # shell de la aplicación
+└── <b>features/</b>
+    ├── identidad/
+    ├── cursos/
+    ├── desafios/
+    ├── teoricos/
+    ├── practicos/
+    ├── sandbox/
+    ├── evaluacion-llm/
+    ├── banco/
+    ├── mercado/
+    ├── roadmap/
+    ├── social/
+    └── backoffice/</pre></section>
+</div>
