@@ -5,11 +5,13 @@ import { FEATURES } from './core/data/platform-catalog';
 import { TABLE_MOCKS } from './core/data/table-mock-catalog';
 import { IDENTIDAD_FEATURE } from './features/identidad/feature';
 import { CURSOS_FEATURE } from './features/cursos/feature';
+import { RoleContextService } from './core/services/role-context.service';
+import { MockCanvasComponent } from './shared/mock-canvas/mock-canvas.component';
 
 describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [App],
+      imports: [App, MockCanvasComponent],
       providers: [provideRouter([])],
     }).compileComponents();
   });
@@ -34,6 +36,25 @@ describe('App', () => {
   it('should show two courses with a dedicated course-home mock', () => {
     const cursos = FEATURES.find(feature => feature.id === 'cursos');
     expect(cursos?.screens.find(screen => screen.id === 'mis-cursos')?.mock).toBe('course-list');
+  });
+
+  it('should show management actions instead of learning actions to teachers in Mis cursos', () => {
+    const fixture = TestBed.createComponent(MockCanvasComponent);
+    const role = TestBed.inject(RoleContextService);
+    const misCursos = CURSOS_FEATURE.screens.find(screen => screen.id === 'mis-cursos')!;
+
+    fixture.componentRef.setInput('feature', CURSOS_FEATURE);
+    fixture.componentRef.setInput('screen', misCursos);
+    role.role.set('profesor');
+    fixture.detectChanges();
+    expect(fixture.nativeElement.textContent).toContain('Cursos a cargo');
+    expect(fixture.nativeElement.textContent).toContain('Editar curso');
+    expect(fixture.nativeElement.textContent).not.toContain('Abrir desafíos');
+
+    role.role.set('alumno');
+    fixture.detectChanges();
+    expect(fixture.nativeElement.textContent).toContain('Dos cursos en curso');
+    expect(fixture.nativeElement.textContent).toContain('Abrir desafíos');
   });
 
   it('should use a dedicated settings mock for course configuration', () => {
