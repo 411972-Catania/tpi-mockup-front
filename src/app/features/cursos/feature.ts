@@ -9,7 +9,7 @@ export const CURSOS_FEATURE: FeatureDefinition = {
   screens:[
     {id:'mis-cursos',title:'Mis cursos',description:'Cursos activos, borradores y archivados.',roles:['alumno','profesor'],phase:'MVP',mock:'course-list',rf:['RF-CUR-08','RF-CUR-09']},
     {id:'nuevo',title:'Crear curso',description:'Datos base, template y fecha de inicio.',roles:['profesor'],phase:'MVP',mock:'builder',rf:['RF-CUR-02']},
-    {id:'configuracion',title:'Configuración del curso',description:'Reglas pedagógicas, invitación y estado.',roles:['profesor'],phase:'MVP',mock:'course',rf:['RF-CFG-02','RF-USR-05g1']},
+    {id:'configuracion',title:'Configuración del curso',description:'Reglas pedagógicas, invitación y estado.',roles:['profesor'],phase:'MVP',mock:'course-settings',rf:['RF-CFG-02','RF-USR-05g1']},
     {id:'comisiones',title:'Comisiones y matrícula',description:'Cohortes, inscriptos y cambios de comisión.',roles:['profesor'],phase:'MVP',mock:'table',rf:['RF-USR-05e']},
     {id:'padron',title:'Padrón del curso',description:'Alta individual, importación masiva y errores.',roles:['profesor'],phase:'MVP',mock:'table',rf:['RF-USR-05c','RF-USR-05d']},
     {id:'pendientes',title:'Solicitudes de matrícula',description:'Casos pendientes contra el padrón del curso.',roles:['profesor'],phase:'MVP',mock:'table',rf:['RF-USR-05g','RF-USR-05h']},

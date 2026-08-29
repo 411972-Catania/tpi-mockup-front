@@ -36,6 +36,10 @@ describe('App', () => {
     expect(cursos?.screens.find(screen => screen.id === 'mis-cursos')?.mock).toBe('course-list');
   });
 
+  it('should use a dedicated settings mock for course configuration', () => {
+    expect(CURSOS_FEATURE.screens.find(screen => screen.id === 'configuracion')?.mock).toBe('course-settings');
+  });
+
   it('should keep pending enrollment validation under Cursos', () => {
     expect(IDENTIDAD_FEATURE.screens.some(screen => screen.id === 'pendientes')).toBe(false);
     expect(CURSOS_FEATURE.screens.find(screen => screen.id === 'pendientes')?.title).toBe('Solicitudes de matrícula');
