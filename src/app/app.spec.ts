@@ -35,6 +35,13 @@ describe('App', () => {
     expect(cursos?.screens.find(screen => screen.id === 'mis-cursos')?.mock).toBe('course-list');
   });
 
+  it('should use self-service registration mocks for both identity roles', () => {
+    const getMock = (id: string) => IDENTIDAD_FEATURE.screens.find(screen => screen.id === id)?.mock;
+
+    expect(getMock('registro-alumno')).toBe('registration');
+    expect(getMock('registro-profesor')).toBe('registration');
+  });
+
   it('should use dedicated activation and profile mocks for identity', () => {
     const getMock = (id: string) => IDENTIDAD_FEATURE.screens.find(screen => screen.id === id)?.mock;
 

@@ -2,6 +2,7 @@ export type Role = 'alumno' | 'profesor' | 'admin';
 export type Phase = 'MVP' | 'Fase 2' | 'Fase 3';
 export type MockKind =
   | 'access'
+  | 'registration'
   | 'onboarding'
   | 'profile'
   | 'table'

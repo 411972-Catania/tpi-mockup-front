@@ -8,8 +8,8 @@ export const IDENTIDAD_FEATURE: FeatureDefinition = {
   dependencies: [],
   screens: [
     { id: 'login', title: 'Ingreso seguro', description: 'Usuario, contraseña, 2FA y recuperación.', roles: ['alumno','profesor','admin'], phase: 'MVP', mock: 'access', rf: ['RF-NFR-02'] },
-    { id: 'registro-alumno', title: 'Registro de alumno', description: 'Elegibilidad, código de curso y validación de legajo.', roles: ['alumno'], phase: 'MVP', mock: 'access', rf: ['RF-USR-03','RF-USR-05g0'] },
-    { id: 'registro-profesor', title: 'Registro de profesor', description: 'Alta self-service contra lista blanca.', roles: ['profesor'], phase: 'MVP', mock: 'access', rf: ['RF-USR-02','RF-USR-04'] },
+    { id: 'registro-alumno', title: 'Registro de alumno', description: 'Datos personales, código de invitación y validación de legajo.', roles: ['alumno'], phase: 'MVP', mock: 'registration', rf: ['RF-USR-03','RF-USR-05g0'] },
+    { id: 'registro-profesor', title: 'Registro de profesor', description: 'Datos personales, whitelist y activación por email.', roles: ['profesor'], phase: 'MVP', mock: 'registration', rf: ['RF-USR-02','RF-USR-04'] },
     { id: 'onboarding', title: 'Activación y onboarding', description: 'Verificación, integración académica y Guided Tour.', roles: ['alumno','profesor'], phase: 'MVP', mock: 'onboarding', rf: ['RF-USR-06','RF-TUR-01'] },
     { id: 'perfil', title: 'Mi perfil', description: 'Datos personales, datos institucionales y preferencias por rol.', roles: ['alumno','profesor','admin'], phase: 'MVP', mock: 'profile', rf: ['RF-CFG-03','RF-REC-02'] },
     { id: 'usuarios', title: 'Gestión de usuarios', description: 'Estados, roles, baja lógica y retención.', roles: ['admin'], phase: 'MVP', mock: 'table', rf: ['RF-ROL-01','RF-NFR-01'] },
